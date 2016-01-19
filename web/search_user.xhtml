@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>APG Webshop</title>
+        <style type="text/css">
+            body {
+                background-color: #EEEEEE;
+            }
+        </style>
+    </h:head>
+    <h:body>
+       
+        <h:form>
+            <h1 align="center">Welcome to APG Webshop</h1>
+            <p align="right">
+                   <h:commandLink value="Logout" action="login"/><br/>
+             </p>
+             <p>
+                <h3>User Management</h3>
+            </p>
+
+            <h3>Search User details</h3>
+            <p>
+                <h:outputLabel for="userId2" value="Enter User Id :"/>&nbsp;&nbsp;
+                <h:inputText id="userId2" value="#{userManager1.seachUserId}"/>&nbsp;&nbsp;
+                 <h:commandButton value="Search" action="#{userManager1.find()}"/>
+            </p>
+            
+            <c:if test="#{!userManager1.userDTO.userAvailable}">
+                
+                <h:outputLabel  value="#{userManager1.existUser}"/>
+            </c:if>
+            
+            
+            <c:if test="#{userManager1.userDTO.userAvailable}">
+                
+                <p>
+                    <h4>User Details : </h4>
+                </p>
+            <p>
+               
+                <h:outputLabel for="userId1" value="User Id : "/>
+                <h:outputLabel id="userId1" value="#{userManager1.userDTO.userId}"/><br/><br/>
+                <h:outputLabel for="name1" value=" User Name : "/>
+                <h:outputLabel id="name1" value="#{userManager1.userDTO.userName}"/><br/><br/>
+                 <h:outputLabel for="role1" value=" User Role : "/>
+                <h:outputLabel id="role1" value="#{userManager1.userDTO.userRole}"/><br/><br/>
+                 <h:outputLabel for="status" value=" User Status : "/>
+                    
+                 <c:if test="#{userManager1.userDTO.userStaus == 'TRUE'}">
+                      <h:outputLabel id="status" value="Active"/><br/><br/>
+                    <h:commandButton id="deActiveId" value="De-Active" action="#{userManager1.deActivateUser()}"/>
+                 </c:if>
+                 
+                  <c:if test="#{userManager1.userDTO.userStaus == 'FALSE'}">
+                       <h:outputLabel id="status" value="In-Active"/><br/><br/>
+                    <h:commandButton id="activeId" value="Active" action="#{userManager1.activateUser()}"/>
+                 </c:if>
+                
+            </p>
+            </c:if>
+            <br/>
+            <h:commandLink value="Back To Maintain Page" action="admin_home"/>
+        </h:form>
+        
+    </h:body>
+</html>

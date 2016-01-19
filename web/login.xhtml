@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>APG Webshop</title>
+        <style type="text/css">
+            body {
+                background-color: #EEEEEE;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <h1 align="center">APG Webshop Login Page</h1>
+       
+
+        <h3>Enter User details</h3>
+        <h:form>
+             #{userManager1.validMessage}
+                <br/>
+            <p>
+                <h:outputLabel for="userId"  style="align:right" value="User Id &nbsp;&nbsp;:&nbsp;&nbsp;"/>
+                <h:inputText id="userId" value="#{userManager1.userId}"/>
+            </p>
+            <p>
+                <h:outputLabel for="password" value=" Password : "/>
+                <h:inputSecret id="password" value="#{userManager1.password}"/>
+            </p>
+            <p>
+                <h:commandButton value="Login" action="#{userManager1.login()}"/>
+            </p>
+             <p>
+                If you are a new user, click on &nbsp; <h:commandLink value="New User" action="#{userManager1.registerUser()}"/>
+            </p>
+        </h:form>
+        
+    </h:body>
+</html>

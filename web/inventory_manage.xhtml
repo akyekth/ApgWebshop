@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>APG Webshop</title>
+        <style type="text/css">
+            body {
+                background-color: #EEEEEE;
+            }
+            
+            .order-table{   
+	border-collapse:collapse;
+}
+
+.order-table-header{
+	text-align:center;
+	background:none repeat scroll 0 0 #E5E5E5;
+	border-bottom:1px solid #BBBBBB;
+	padding:16px;
+}
+
+.order-table-odd-row{
+	text-align:center;
+	background:none repeat scroll 0 0 #FFFFFFF;
+	border-top:1px solid #BBBBBB;
+}
+
+.order-table-even-row{
+	text-align:center;
+	background:none repeat scroll 0 0 #F9F9F9;
+	border-top:1px solid #BBBBBB;
+}
+        </style>
+    </h:head>
+    <h:body>
+       
+        <h:form>
+            <h1 align="center">Welcome to APG Webshop</h1>
+            <p align="right">
+                   <h:commandLink value="Logout" action="login"/><br/>
+             </p>
+             <p>
+                <h3>Inventory Management</h3>
+            </p>
+
+            <h3>Inventory Articles  details</h3>
+            
+             <c:if test="#{inventoryManager.emptyInventory}">
+                  <h:outputLabel  value="#{inventoryManager.emptyInventoryMessage}"/>
+             </c:if>
+            
+            <c:if test="#{!inventoryManager.emptyInventory}">
+            <h:dataTable value="#{inventoryManager.inventoryDTOList}" var="inv"
+    			styleClass="order-table"
+    			headerClass="order-table-header"
+    			rowClasses="order-table-odd-row,order-table-even-row">
+
+    			<h:column>
+    				<!-- column header -->
+    				<f:facet name="header">Article No</f:facet>
+    				<!-- row record -->
+    				#{inv.articleId}
+    			</h:column>
+    			
+    			<h:column>
+    				<f:facet name="header">Article Name</f:facet>
+    				#{inv.articleName}
+    			</h:column>
+                
+                        <h:column>
+    				<f:facet name="header">Article Price</f:facet>
+    				<h:inputText id="artPrice" value="#{inv.articlePrice}"/>
+    			</h:column>
+    			
+    			<h:column>
+    				<f:facet name="header">Article Item Count</f:facet>
+    				<h:inputText id="artCount" value="#{inv.articleCount}"/>
+                        </h:column>
+                        
+                        <h:column>
+    				<f:facet name="header">Actions</f:facet>
+    				 <h:commandButton value="Update" action="#{inventoryManager.updateInventory(inv)}"/>
+                                 <h:commandButton value="Remove" action="#{inventoryManager.removeInventory(inv)}"/>
+    			</h:column>
+    			
+    			
+    		
+    		</h:dataTable>
+                
+            </c:if>
+             <br/><br/>
+             <h:commandButton value="Add New Article" action="#{inventoryManager.addNewArticle()}"/>
+             <br/><br/>
+             <h:commandLink value="Back To Maintain Page" action="admin_home"/>
+            
+        </h:form>
+        
+    </h:body>
+</html>

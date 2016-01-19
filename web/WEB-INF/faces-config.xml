@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2"
+              xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+
+ <navigation-rule>
+        <from-view-id>/login.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>user_home</from-outcome>
+            <to-view-id>/user_shop_main.xhtml</to-view-id>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>newuser</from-outcome>
+            <to-view-id>/register_user.xhtml</to-view-id>
+        </navigation-case>
+         <navigation-case>
+            <from-outcome>admin_home</from-outcome>
+            <to-view-id>/admin_user.xhtml</to-view-id>
+        </navigation-case>
+         <navigation-case>
+            <from-outcome>inventory_manage</from-outcome>
+            <to-view-id>/inventory_manage.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>error</from-outcome>
+            <to-view-id>/error.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/admin_user.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>search_user</from-outcome>
+            <to-view-id>/search_user.xhtml</to-view-id>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>error</from-outcome>
+            <to-view-id>/error.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+     <navigation-rule>
+        <from-view-id>/search_user.xhtml</from-view-id>
+         <navigation-case>
+            <from-outcome>admin_home</from-outcome>
+            <to-view-id>/admin_user.xhtml</to-view-id>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>error</from-outcome>
+            <to-view-id>/error.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    
+     <navigation-rule>
+        <from-view-id>/inventory_manage.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>admin_home</from-outcome>
+            <to-view-id>/admin_user.xhtml</to-view-id>
+        </navigation-case>
+         <navigation-case>
+            <from-outcome>addNewArticle</from-outcome>
+            <to-view-id>/add_article.xhtml</to-view-id>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>error</from-outcome>
+            <to-view-id>/error.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/user_shop.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>user_home</from-outcome>
+            <to-view-id>/user_shop_main.xhtml</to-view-id>
+        </navigation-case>
+         <navigation-case>
+            <from-outcome>cart_main</from-outcome>
+            <to-view-id>/user_cart.xhtml</to-view-id>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>error</from-outcome>
+            <to-view-id>/error.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+     <navigation-rule>
+        <from-view-id>/user_cart.xhtml</from-view-id>
+       
+         <navigation-case>
+            <from-outcome>user_shop</from-outcome>
+            <to-view-id>/user_shop.xhtml</to-view-id>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>error</from-outcome>
+            <to-view-id>/error.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+
+</faces-config>

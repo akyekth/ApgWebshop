@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>APG Webshop</title>
+        <style type="text/css">
+            body {
+                background-color: #EEEEEE;
+            }
+        </style>
+    </h:head>
+    <h:body>       
+
+        <h:form>            
+            <h1 align="center">Welcome to APG Webshop</h1>
+            <p align="right">
+                   <h:commandLink value="Logout" action="login"/><br/>
+            </p>
+             <p>
+                <h4>Enter Article Details </h4>
+            </p>
+            <p>
+                <h:outputLabel for="errMesg1" value="#{inventoryManager.validationMessage}"/><br/><br/>
+                <h:outputLabel for="artId" value="Article Id    : "/>
+                <h:inputText id="artId" value="#{inventoryManager.inventoryDT.articleId}"/><br/><br/>
+                <h:outputLabel for="articleName" value=" Article Name   : "/>
+                <h:inputText id="articleName" value="#{inventoryManager.inventoryDT.articleName}"/><br/><br/>
+                 <h:outputLabel for="artPrice" value=" Article Price   : "/>
+                <h:inputText id="artPrice" value="#{inventoryManager.inventoryDT.articlePrice}"/><br/><br/>
+                <h:outputLabel for="artCount" value=" Article Count : "/>
+                <h:inputText id="artCount" value="#{inventoryManager.inventoryDT.articleCount}"/><br/><br/>
+            </p>
+            <p>
+                <h:commandButton value="Add" action="#{inventoryManager.addArticle()}"/> 
+                 <h:commandLink value="Cancel" action="inventory_manage"/>
+            </p>
+        </h:form>
+        <hr />
+
+       
+    </h:body>
+</html>
