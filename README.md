@@ -1,2 +1,5 @@
-# id2212-hw4-converterjsf
-A currency converter with a Web-interface
+# id2212-APGWebshop
+
+Its look like online store.buying and selling items.
+Using EJB,JSF,Darbydatabase
+
